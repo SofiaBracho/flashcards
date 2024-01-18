@@ -1,0 +1,48 @@
+{% extends "flashcards/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container text-center hero">
+        {% if user.is_authenticated %}
+            <div class="row align-items-center mt-3">
+                <div class="col text-left">
+                    <h4>Welcome back, {{user.username}}!</h4>
+                    <p>Learn new vocabulary today using flashcards.</p>
+                    <a class="btn btn-primary" href="{{ 'study' }}">Start studying</a>
+                </div>
+
+                <div class="col text-right">
+                    <img class="w-75" src="{% static 'img/1.jpg' %}" alt="Flashcard image">
+                </div>
+            </div>
+
+            <h4 class="mt-5 text-left">Tutorial:</h4>
+            <div class="card-group mt-3 mb-5">
+              <div class="card">
+                <img src="{% static 'img/card.gif' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">1. Flip card</h5>
+                  <p class="card-text">Click the flip card button to reveal the meaning of the word.</p>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{% static 'img/card-flipped.gif' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">2. Select proficiency</h5>
+                  <p class="card-text">Click 'Already learned' if you know the meaning of the word. Select 'Need more practice' instead if you need to keep reviewing the word.</p>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{% static 'img/status.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title mt-4">3. Check status</h5>
+                  <p class="card-text">Go to the status page to check how many words you have learned and other info.</p>
+                </div>
+              </div>
+            </div>
+
+        {% else %}
+            <h6 class="mt-3">Please <a href="{% url 'login' %}">log in</a> to learn new vocabulary.</h6>
+        {% endif %}
+    </div>
+{% endblock %}

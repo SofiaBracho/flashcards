@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{% block title %}Flashcards{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'flashcards/styles.css' %}" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/72df3b1037.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" data-bs-theme="dark">
+            <a class="navbar-brand" href="/">Flashcards</a>
+          
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'study' %}">Study</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'review' %}">Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learned' %}">Learned</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}"><strong>Stats</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+        </nav>
+        
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+            <footer class="fg-1">
+                <small class="container">Sofia Bracho, 2024 ©</small>
+            </footer>
+        </div>
+
+        <script src="{% static 'flashcards/scripts.js' %}"></script>
+    </body>
+</html>

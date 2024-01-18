@@ -1,0 +1,74 @@
+{% extends "flashcards/layout.html" %}
+{% load progress_width %}
+{% load static %}
+
+{% block body %}
+
+    {% if card %}
+        <div class="cont-center">
+            <h4 class="mb-5">Learn new vocabulary</h4>
+
+            <!-- Flashcard -->
+            <div class="wrapper-cards">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col fg-0">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                                <i class="fa-solid fa-chevron-left fs-2"></i>
+                            </a>
+                        {% else %}
+                            <a class="disabled">
+                                <i class="fa-solid fa-chevron-left fs-2"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="col">
+                        <div class="card text-center" id="card" style="width: 18rem;" data-id="{{ card.pk }}">
+                            <img src="{{ card.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 id="word-en" class="card-title">{{ card.english_word }}</h5>
+                                <h5 id="word-es" class="card-title">{{ card.translation }}</h5>
+
+                                <button id="flip-btn" class="btn btn-primary mt-3">Flip Card</button>
+                            </div>
+
+                            <ul id="proficiency-options" class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <button class="btn btn-success" id="btn-learned">
+                                        Already learned
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <button class="btn btn-warning" id="btn-more-practice">
+                                        Need more practice
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col fg-0">
+                        {% if page_obj.has_next %}    
+                            <a href="?page={{ page_obj.next_page_number }}" id="next-page">
+                                <i class="fa-solid fa-chevron-right fs-2"></i>
+                            </a>
+                        {% else %}
+                            <a class="disabled" id="next-page">
+                                <i class="fa-solid fa-chevron-right fs-2"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="progress mt-5" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: {{ page_obj.number|progress_width:page_obj.paginator.num_pages }}%">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p class="mt-5 text-center">There are no words to study...</p>
+    {% endif %}
+
+{% endblock %}

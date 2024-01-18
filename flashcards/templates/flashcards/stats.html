@@ -1,0 +1,42 @@
+{% extends "flashcards/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container mt-3">
+      <div id="user-info">
+        <img src="{{ user.profile_pic.url }}" alt="Profile picture">
+        <div>
+          <h4>{{ user.username }}</h4>
+          <h6>{{ user.email }}</h6>
+        </div>
+      </div>
+
+      <h4 class="mt-4">Your stats:</h4>
+      <div class="stats row mb-3">
+        <ul class="list-group col-4">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Total words studied
+            <span class="badge bg-primary rounded-pill">{{ stats.total_cards }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Words that need practice
+            <span class="badge bg-warning rounded-pill">{{ stats.need_practice_cards }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Already learned words
+            <span class="badge bg-success rounded-pill">{{ stats.learned_cards }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <small>You have learned {{ stats.percent_learned }}% of the total words studied.</small>
+      <br>
+      <br>
+      {% if stats.last_studied %}
+        <p>Last time studied: {{ stats.last_studied }}</p>
+      {% else %}
+        <p>Start you first study session now!</p>
+        <a href="{% url 'study' %}" class="btn btn-primary">Go study</a>
+      {% endif %}
+    </div>
+{% endblock %}

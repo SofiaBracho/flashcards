@@ -12,7 +12,7 @@ def profile_pic_src(instance, filename):
 
 
 class User(AbstractUser):
-    profile_pic = models.ImageField(upload_to=profile_pic_src, default='img/users/default.jpg') 
+    profile_pic = models.ImageField(upload_to=profile_pic_src, default='img/users/default.jpg', null=True, blank=True) 
 
     def __str__(self):
         return f"{self.username}"
@@ -46,10 +46,6 @@ class Stats(models.Model):
     learned_cards = models.IntegerField(default=0)
     percent_learned = models.DecimalField(default=100.00, max_digits=5, decimal_places=2)
     last_studied = models.DateTimeField(default=None, null=True, blank=True)
-
-    # Update my django model to get total cards and learned cards by querying proficiency
-    # Calculate percent learned with a method
-    # Calculate last studied by last flashcards proficiency updated
 
     def __str__(self):
         return f"{self.user.username} has studied {self.total_cards} flashcards, of which {self.learned_cards} have been learned"

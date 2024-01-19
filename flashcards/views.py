@@ -11,6 +11,26 @@ import json
 
 from .models import User, Flashcard, Stats, Proficiency
 
+
+@login_required
+def new_flashcard(request):
+    if request.method == "POST":
+        english_word = request.POST["english-word"]
+        translation = request.POST["translation"]
+        flashcard_img = request.FILES["flashcard-img"]
+
+        # Attempt to create new flashcard
+        try:
+            flashcard = Flashcard.objects.create(english_word=english_word, translation=translation, image=flashcard_img)
+            flashcard.save()
+        except IntegrityError:
+            return render(request, "flashcards/new_flashcard.html", {
+                "message": "Flashcard already exists with the same word."
+            })
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "flashcards/new_flashcard.html")
+
 @login_required
 def set_proficiency(request):
     """Updates user proficiency of a word"""
@@ -81,7 +101,7 @@ def study(request):
         pk__in=Proficiency.objects.filter(
             user=request.user
         ).values_list('flashcard__id', flat=True)
-    )[:10]
+    ).order_by('-pk')[:10]
 
     paginator = Paginator(flashcards_to_study, 1) # Show 1 flashcard per page.
 
@@ -105,8 +125,9 @@ def review(request):
             user=request.user,
             level=0
         ).values_list('flashcard__id', flat=True),
+        # Append last studied field to flashcards?
         
-    )[:10]
+    ).order_by('-pk')[:10]
 
     paginator = Paginator(flashcards_to_review, 1) # Show 1 flashcard per page.
 
@@ -136,7 +157,7 @@ def learned(request):
         ).values_list('flashcard__id', flat=True)
     ).annotate(last_studied=Max('proficiency__last_studied')).order_by('-last_studied')
 
-    paginator = Paginator(learned_cards, 5) # Show 10 learned flashcards per page.
+    paginator = Paginator(learned_cards, 10) # Show 10 learned flashcards per page.
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -187,7 +208,8 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
-        profile_pic = request.FILES["profile_pic"]
+
+        profile_pic = request.FILES.get("profile_pic")
 
         # Ensure password matches confirmation
         password = request.POST["password"]

@@ -25,7 +25,12 @@
 
                     <div class="col">
                         <div class="card text-center" id="card" style="width: 18rem;" data-id="{{ card.pk }}">
-                            <img src="{{ card.image.url }}" class="card-img-top" alt="...">
+                            {% if card.image %}
+                                <img src="{{ card.image.url }}" class="card-img-top" alt="Imagen">
+                            {% else %}
+                                <img src="{% static 'img/flashcards/default.jpg' %}" class="card-img-top" alt="Imagen">
+                            {% endif %}
+
                             <div class="card-body">
                                 <h5 id="word-en" class="card-title">{{ card.english_word }}</h5>
                                 <h5 id="word-es" class="card-title">{{ card.translation }}</h5>

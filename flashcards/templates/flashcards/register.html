@@ -12,20 +12,20 @@
         <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="Email Address">
+                <input class="form-control" type="email" name="email" placeholder="Email Address" required>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password">
+                <input class="form-control" type="password" name="password" placeholder="Password" required>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
             </div>
             
             <label for="formFile" class="form-label">Profile picture:</label>
-            <input class="form-control" name="profile_pic" type="file" id="formFile">
+            <input class="form-control" name="profile_pic" type="file" id="formFile" accept="image/png, image/jpeg">
     
             <input class="btn btn-primary mt-3 mb-3" type="submit" value="Register">
         </form>

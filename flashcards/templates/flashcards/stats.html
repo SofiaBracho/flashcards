@@ -4,7 +4,12 @@
 {% block body %}
     <div class="container mt-3">
       <div id="user-info">
-        <img src="{{ user.profile_pic.url }}" alt="Profile picture">
+        {% if user.profile_pic %}
+          <img src="{{ user.profile_pic.url }}" alt="Profile picture">
+        {% else %}
+          <img src="{% static 'img/users/default.jpg' %}" alt="Profile picture">
+        {% endif %}
+        
         <div>
           <h4>{{ user.username }}</h4>
           <h6>{{ user.email }}</h6>

@@ -11,4 +11,5 @@ urlpatterns = [
     path("learned", views.learned, name="learned"),
     path("profile", views.profile, name="profile"),
     path("set_proficiency", views.set_proficiency, name="set_proficiency"),
+    path("new_flashcard", views.new_flashcard, name="new_flashcard"),
 ]

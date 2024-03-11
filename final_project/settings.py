@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-14ib+un!m)78tn%_3^(b@f+4og(h8@2o)*7yk8gus5n=s!j8bv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -82,6 +82,18 @@ DATABASES = {
     }
 }
 
+# TODO: crear base de datos en railway https://www.youtube.com/watch?v=w5DRzbQ0Suo
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'QgDe0yj56eHJFqK',
+#         'HOST': 'containers-us-west-196.railway.app',
+#         'PORT': '6625',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -119,7 +131,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

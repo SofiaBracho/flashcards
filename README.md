@@ -147,8 +147,11 @@ Flashcards is an open-source project and anyone from the community can contribut
 If you'd like to contribute, fork the repository and make changes as you'd like. Pull requests are welcome.
 
 ### 👥 Author
-**Sofia Bracho**
 
 <a href="https://github.com/SofiaBracho">
   <img src="https://github.com/SofiaBracho/flashcards/blob/master/media/author.png" width="50px" alt="Author"/>
 </a>
+
+**Sofia Bracho**
+<br>
+Web developer

@@ -1,15 +1,25 @@
-# Flashcards App
-
-This Django application allows users to create and study flashcards, track their progress, and review learned words. It includes features such as proficiency tracking, statistics, and user authentication.
-
-
-## Distinctiveness and Complexity
-My Flashcards app proves being distinct to other applications I have the oportunity to develop during the CS50Web course. It is clear that is not a social network, nor an e-commerce site, instead, it can be categorized as an educational application (but different than a wiki). I tried to imagine how to develop this application without seeing other similar language flashcard apps, to not influence strongly the design. 
-
-Also, the ability to create your own flashcards and not be limited to a specific language makes it flexible. Functionalities like tracking words proficiency, reviewing known words, displaying a list of learned words and having user stats makes it sufficiently complex to satisfy the requirements of the submission. A simple tutorial in the home page helps new users to familiarize with its minimalistic user interface. I combined techniques learned during the course such as scalability, responsive interfaces, asyncronous calls to Python API's using JavaScript, Django models and version control to make sure to apply almost everything I learned during this awesome course!
+<div align="center">
+  <h1 align="center">Flashcards App</h1>
+</div>
+<br/>
 
 
-## Key Features
+
+<div align="center">
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
+<br/>
+<br/>
+![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=for-the-badge)
+![GitHub Badge](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=fff&style=for-the-badge)
+</div>
+
+
+This Django App allows users to create and study flashcards, track their progress, and review learned words. It includes features such as proficiency tracking, statistics, and user authentication.
+
+
+## ⚙️ Key Features
 - **Flashcard Creation**: Users can create new flashcards with words in their target language, translation in their native language, and images.
 
 - **Proficiency Tracking**: Users can set their proficiency level for each flashcard, indicating whether they need practice or have learned the word.
@@ -22,68 +32,119 @@ Also, the ability to create your own flashcards and not be limited to a specific
 
 - **User Authentication**: Users can register, log in, and log out of the application.
 
-## Files Explanation 
-(What’s contained in each file)
 
-### 1. Models
+## 🖥️ Demo
+
+![Flashcards Demo GIF](https://github.com/SofiaBracho/flashcards/tree/master/media/demo.gif)
+
+**Full demo**: https://youtu.be/9urd2xRv_1Q
+
+## 🗄️ Models
 
 The `models.py` file defines the database models for the application: 
-- **User**: represents a user account with attributes such as username, email, password, and other fields inherited from the default User model. The custom User model has methods to authenticate users and I added an ImageField for the profile picture.
-- **Flashcard**: represents a card with attributes including target language word, native language translation, and a reference image.
+- **User**: represents a user account with attributes such as: 
+  - Username
+  - Email,
+  - Password
+  - Profile picture
+- **Flashcard**: represents a card. 
+  - Target language word
+  - Native language translation
+  - Reference image.
 - **Proficiency**: Represents a level of mastery for a specific flashcard word. It is related to the Flashcard and User model using ForeignKeys, with a unique_together attribute between user and flashcard fields to avoid duplication.
-- **Stats**: Represents statistics about a user's performance on studying or practicing flashcards. It contains fields for total cards studied, learned flashcards, flashcards that need more practice, last time studied, etc. This model is linked to the User model via a OneToOneField
+- **Stats**: Represents statistics about a user's performance on studying or practicing flashcards. 
+  - Cards studied count
+  - Learned flashcards count
+  - Flashcards that need more practice count 
+  - Last time studied
 
-### 2. Views
-The `views.py` file contains all the views functions which handle incoming requests from users. There are three main types of views: login/logout related views, dashboard views, and
-card management views. Each view is associated with a URL route defined in `urls.py`.
+## 🖇️ Views
+The `views.py` file contains all the views functions which handle incoming requests.
 
 - **New Flashcard**: Receives a POST request to create a new flashcard object and save it in the database.
+
+![New flashcard view](https://github.com/SofiaBracho/flashcards/tree/master/media/new.PNG)
+
 - **Set Proficiency**: Receives a POST request from a fetch call and updates an user proficiency of certaing word/flashcard. 
 - **Update Stats**: Update user stats into the database and calculate percent of words learned. Is called when a flashcard proficiency is updated.
 - **Index**: Renders index template.
+
+![Index view](https://github.com/SofiaBracho/flashcards/tree/master/media/home.PNG)
+
 - **Study**: Gets max 10 flashcards for a study deck and shows one per page using Django paginator. 
-- **Review**: Gets max 10 flashcards that needs more practice for a review deck and shows one per page using Django paginator. 
+
+![Study view](https://github.com/SofiaBracho/flashcards/tree/master/media/study.PNG)
+
+- **Review**: Gets max 10 flashcards that needs more practice for a review deck and shows one per page using Django paginator.  
+
+![Review view](https://github.com/SofiaBracho/flashcards/tree/master/media/review.PNG)
+
 - **Learned**: Gets all learned flashcards ordered by last studied date time, using Paginator shows 5 per page.
+
+![Learned view](https://github.com/SofiaBracho/flashcards/tree/master/media/learned.PNG)
+
 - **Profile**: Gets user stats and renders stats template.
+
+![Profile view](https://github.com/SofiaBracho/flashcards/tree/master/media/profile.PNG)
+
 - **Login**: Handles user login by checking if provided credentials match those stored in the database and redirects accordingly. If not logged in, renders login page with error message (if any).
+
+![Login view](https://github.com/SofiaBracho/flashcards/tree/master/media/login.PNG)
+
 - **Logout**: Logs out current user by removing session data and displaying login page.
 
 
-### 3. Templates
-The templates folder holds HTML files used by Django to render pages to the user's browser.
-Each template corresponds to a specific view function and includes references to other
-templates via the {% extends %} tag at the top of the page. The application has the following templates:
+## 🛠️ Getting Started
 
-- ``index.html``
-- ``layout.html``
-- ``learned.html``
-- ``login.html``
-- ``new_flashcard.html``
-- ``register.html``
-- ``review.html``
-- ``stats.html``
-- ``study.html``
+### Prerequisites
 
-### 4. Urls
-Has all URLs mapped to their corresponding view functions. 
+Here's what you need to be able to run this App:
 
-### 5. Media
-This section describes any media files included in the project, such as images (user pictures and flashcards images).
+- Node.js
+- MySQLI
+- Python
+- Django
 
-### 6. Static
-This section describes static assets, such as CSS stylesheets and JavaScript files. 
+### 1. Clone the repository
 
-## Running the application
-Make sure you have Python and Git installed on your computer. Then follow these steps:
+```shell
+git clone https://github.com/SofiaBracho/flashcards.git
+cd flashcards
+```
 
-1. Clone the repository into your local machine using Git. Open terminal and type:
-``git clone https://github.com/SofiaBracho/flashcards.git``
-2. Go to the project directory: 
-``cd flashcards``
-3. Migrate Django models:
-``python manage.py makemigrations``
-``python manage.py migrate``
-4. Run the local server:
-``python manage.py runserver``
-5. Open http://localhost:8000 in your web browser. You should see the homepage
-with "Log in" and "Register" button.
+### 2. Migrate database models
+
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 3. Run the dev server
+
+```shell
+python manage.py runserver
+```
+
+### 4. Open the App in your local host
+
+```shell
+http://localhost:8000
+```
+
+### 5. Register and login
+
+Create your user account in the /register route, then login into the form in the /login route.
+
+
+## 🔀 Contributing
+
+Flashcards is an open-source project and anyone from the community can contribute to it.
+
+If you'd like to contribute, fork the repository and make changes as you'd like. Pull requests are welcome.
+
+### 👥 Author
+**Sofia Bracho**
+
+<a href="https://github.com/SofiaBracho">
+  <img src="https://github.com/SofiaBracho/flashcards/tree/master/media/author.jpg" styles="border-radius: 50%; width:75px; height:75px;" />
+</a>

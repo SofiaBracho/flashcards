@@ -11,8 +11,12 @@
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
 <br/>
 <br/>
+<a href="https://www.linkedin.com/in/sofiabrach0/">
 ![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=for-the-badge)
+</a>
+<a href="https://github.com/SofiaBracho">
 ![GitHub Badge](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=fff&style=for-the-badge)
+</a>
 </div>
 
 
@@ -35,9 +39,9 @@ This Django App allows users to create and study flashcards, track their progres
 
 ## 🖥️ Demo
 
-![Flashcards Demo GIF](https://github.com/SofiaBracho/flashcards/tree/master/media/demo.gif)
+![Flashcards Demo GIF](https://github.com/SofiaBracho/flashcards/blob/master/media/demo.gif)
 
-**Full demo**: https://youtu.be/9urd2xRv_1Q
+<a href="https://youtu.be/9urd2xRv_1Q">**Full demo on Youtube**</a>
 
 ## 🗄️ Models
 
@@ -69,27 +73,27 @@ The `views.py` file contains all the views functions which handle incoming reque
 - **Update Stats**: Update user stats into the database and calculate percent of words learned. Is called when a flashcard proficiency is updated.
 - **Index**: Renders index template.
 
-![Index view](https://github.com/SofiaBracho/flashcards/tree/master/media/home.PNG)
+![Index view](https://github.com/SofiaBracho/flashcards/blob/master/media/home.PNG)
 
 - **Study**: Gets max 10 flashcards for a study deck and shows one per page using Django paginator. 
 
-![Study view](https://github.com/SofiaBracho/flashcards/tree/master/media/study.PNG)
+![Study view](https://github.com/SofiaBracho/flashcards/blob/master/media/study.PNG)
 
 - **Review**: Gets max 10 flashcards that needs more practice for a review deck and shows one per page using Django paginator.  
 
-![Review view](https://github.com/SofiaBracho/flashcards/tree/master/media/review.PNG)
+![Review view](https://github.com/SofiaBracho/flashcards/blob/master/media/review.PNG)
 
 - **Learned**: Gets all learned flashcards ordered by last studied date time, using Paginator shows 5 per page.
 
-![Learned view](https://github.com/SofiaBracho/flashcards/tree/master/media/learned.PNG)
+![Learned view](https://github.com/SofiaBracho/flashcards/blob/master/media/learned.PNG)
 
 - **Profile**: Gets user stats and renders stats template.
 
-![Profile view](https://github.com/SofiaBracho/flashcards/tree/master/media/profile.PNG)
+![Profile view](https://github.com/SofiaBracho/flashcards/blob/master/media/profile.PNG)
 
 - **Login**: Handles user login by checking if provided credentials match those stored in the database and redirects accordingly. If not logged in, renders login page with error message (if any).
 
-![Login view](https://github.com/SofiaBracho/flashcards/tree/master/media/login.PNG)
+![Login view](https://github.com/SofiaBracho/flashcards/blob/master/media/login.PNG)
 
 - **Logout**: Logs out current user by removing session data and displaying login page.
 
@@ -133,7 +137,7 @@ http://localhost:8000
 
 ### 5. Register and login
 
-Create your user account in the /register route, then login into the form in the /login route.
+Create your user account in the `/register` route, then login into the form in the `/login` route.
 
 
 ## 🔀 Contributing
@@ -146,5 +150,5 @@ If you'd like to contribute, fork the repository and make changes as you'd like.
 **Sofia Bracho**
 
 <a href="https://github.com/SofiaBracho">
-  <img src="https://github.com/SofiaBracho/flashcards/tree/master/media/author.jpg" styles="border-radius: 50%; width:75px; height:75px;" />
+  <img src="https://github.com/SofiaBracho/flashcards/blob/master/media/author.jpg" styles="border-radius: 50%; width:75px; height:75px;" />
 </a>

@@ -67,7 +67,7 @@ The `views.py` file contains all the views functions which handle incoming reque
 
 - **New Flashcard**: Receives a POST request to create a new flashcard object and save it in the database.
 
-![New flashcard view](https://github.com/SofiaBracho/flashcards/tree/master/media/new.PNG)
+![New flashcard view](https://github.com/SofiaBracho/flashcards/blob/master/media/new.PNG)
 
 - **Set Proficiency**: Receives a POST request from a fetch call and updates an user proficiency of certaing word/flashcard. 
 - **Update Stats**: Update user stats into the database and calculate percent of words learned. Is called when a flashcard proficiency is updated.

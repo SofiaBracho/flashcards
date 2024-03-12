@@ -150,5 +150,5 @@ If you'd like to contribute, fork the repository and make changes as you'd like.
 **Sofia Bracho**
 
 <a href="https://github.com/SofiaBracho">
-  <img src="https://github.com/SofiaBracho/flashcards/blob/master/media/author.png" styles="width:75px;" alt="Author"/>
+  <img src="https://github.com/SofiaBracho/flashcards/blob/master/media/author.png" width="50px" alt="Author"/>
 </a>

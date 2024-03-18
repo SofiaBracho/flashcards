@@ -60,7 +60,7 @@ addEventListener("DOMContentLoaded", (event) => {
         }
 
         // var url = `http://127.0.0.1:8000/set_proficiency`
-        var url = window.location.origin + "/set_proficiency/"
+        var url = window.location.origin + "/set_proficiency"
         fetch(url, {
             method:'POST',
             headers:{

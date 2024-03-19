@@ -29,10 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-8a70.up.railway.app', 
-    'https://web-production-8a70.up.railway.app/login',
-    'https://web-production-8a70.up.railway.app/register',
-    'https://web-production-8a70.up.railway.app/new_flashcard'
+    'https://flashcards.up.railway.app', 
+    'https://flashcards.up.railway.app/login',
+    'https://flashcards.up.railway.app/register',
+    'https://flashcards.up.railway.app/new_flashcard'
 ]
 
 
